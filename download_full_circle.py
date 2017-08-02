@@ -27,8 +27,7 @@ def editions(issue, base_url):
 			en_ver = re.compile("en.pdf$", re.IGNORECASE)          
 			if en_ver.search(all_pdfs):
 				all_table.append(all_pdfs)
-		return all_table
-		
+	
 	elif issue == 'past':
 		issue_table = make_soup(base_url + "/downloads")
 		table_links = issue_table.find("table", {"class":"issuetable"}) 
@@ -36,7 +35,8 @@ def editions(issue, base_url):
 		for i in range(1, len(all_links)+1):
 			links = "http://dl.fullcirclemagazine.org/issue{0}_en.pdf".format(i) 
 			all_table.append(links)
-		return all_table
+	
+	return all_table
 
 def make_grequests(urls_table):
 	requests = (grequests.get(u, stream=True) for u in urls_table)
@@ -62,7 +62,7 @@ def main():
 				\nEneter: \
 				\n[1] for special-python editions \
 				\n[2] for all past editions \
-				\n--->")
+				\n---> ")
 
 	if user_prompt == "1":
 		special_editions = editions("special", base_url)
