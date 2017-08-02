@@ -6,7 +6,8 @@ import grequests
 from bs4 import BeautifulSoup
 
 __version__ = '0.1'
-__author__ = 'Norbert Bota ~ botanorbert1@gmail.com'
+__author__ =  'Norbert Bota'
+__author_email__= 'botanorbert1@gmail.com'
 
 def make_soup(url):
 	req_url = requests.get(url)
