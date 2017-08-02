@@ -1,9 +1,13 @@
+#!/usr/bin/env python
+
 import os
 import re
 import requests
 import grequests
 from bs4 import BeautifulSoup
 
+__version__ = '0.1'
+__author__ = 'Norbert Bota ~ botanorbert1@gmail.com'
 
 def make_soup(url):
 	req_url = requests.get(url)
