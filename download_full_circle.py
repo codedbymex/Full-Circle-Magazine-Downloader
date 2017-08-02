@@ -11,6 +11,7 @@ def make_soup(url):
 	return soup
 
 def editions(issue, base_url):
+	"""Find all editions"""
 	all_table = []
 	
 	if issue == 'special':
@@ -39,10 +40,12 @@ def make_grequests(urls_table):
 	return responses
 	
 def download_editions(dir_name, link_list):
+	""" Create folder and download editions """
 	try:
 		os.makedirs(dir_name)
 	except OSError:
 		pass
+	# cd to dir
 	os.chdir(dir_name)
 	for i in make_grequests(link_list):
 		with open(str(i.url.rpartition('/')[2]), 'wb') as f:
@@ -51,12 +54,11 @@ def download_editions(dir_name, link_list):
 def main():
 	base_url = "http://fullcirclemagazine.org"
 	
-	
 	user_prompt = raw_input("--- Downloadn Full-Circle magazine editions ---\
-								\nEneter: \
-								\n[1] for special-python editions \
-								\n[2] for all past editions \
-								\n--->")
+				\nEneter: \
+				\n[1] for special-python editions \
+				\n[2] for all past editions \
+				\n--->")
 
 	if user_prompt == "1":
 		special_editions = editions("special", base_url)
