@@ -4,6 +4,6 @@ asynchronous requests with grequests library. Works in Linux.
 
 
  # You can download:
+  - [Past Issues](http://fullcirclemagazine.org/downloads/)
+
  - [Python Special Editions](http://fullcirclemagazine.org/python-special-editions/)
- or
- - [Past Issues](http://fullcirclemagazine.org/downloads/)
