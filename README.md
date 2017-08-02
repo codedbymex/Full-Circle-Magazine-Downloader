@@ -7,3 +7,5 @@ asynchronous requests with grequests library. Works in Linux.
   - [Past Issues](http://fullcirclemagazine.org/downloads/)
 
  - [Python Special Editions](http://fullcirclemagazine.org/python-special-editions/)
+
+> Full Circle is a free, independent, monthly PDF magazine dedicated to the Ubuntu family of Linux operating systems. Each month, it contains helpful how-to articles and reader submitted stories. 
