@@ -35,6 +35,7 @@ def editions(issue, base_url):
 		for i in range(1, len(all_links)+1):
 			links = "http://dl.fullcirclemagazine.org/issue{0}_en.pdf".format(i) 
 			all_table.append(links)
+	else:pass
 	
 	return all_table
 
@@ -70,6 +71,7 @@ def main():
 	elif user_prompt == "2":
 		past_editions = editions("past", base_url)
 		download_editions("past-editions", past_editions)
-
+	else:pass
+	
 if __name__=='__main__':
 	main()
