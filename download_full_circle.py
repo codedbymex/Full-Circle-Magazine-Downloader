@@ -9,13 +9,15 @@ __version__ = '0.1'
 __author__ =  'Norbert Bota'
 __author_email__= 'botanorbert1@gmail.com'
 
+base_url = "http://fullcirclemagazine.org"
+
 def make_soup(url):
 	req_url = requests.get(url)
 	soup = BeautifulSoup(req_url.content, "lxml")
 	return soup
 
 def editions(issue, base_url):
-	"""Find all editions"""
+	""" Find all editions """
 	all_table = []
 	
 	if issue == 'special':
@@ -36,11 +38,12 @@ def editions(issue, base_url):
 			links = "http://dl.fullcirclemagazine.org/issue{0}_en.pdf".format(i) 
 			all_table.append(links)
 	else:pass
-	
 	return all_table
 
 def make_grequests(urls_table):
+	""" Make concomitent requests with grequests library """
 	requests = (grequests.get(u, stream=True) for u in urls_table)
+	# the size parameter limits the number of concurrent requests.
 	responses = grequests.map(requests, size=10)
 	return responses
 	
@@ -56,22 +59,22 @@ def download_editions(dir_name, link_list):
 		with open(str(i.url.rpartition('/')[2]), 'wb') as f:
 			f.write(i.content)
 			
+def user_choice(user_prompt):
+	""" Get user choice """
+	if user_prompt == "1":
+		special_editions = editions("special", base_url)
+		return download_editions("special-editions", special_editions)
+	elif user_prompt == "2":
+		past_editions = editions("past", base_url)
+		return download_editions("past-editions", past_editions)
+	else:pass
+			
 def main():
-	base_url = "http://fullcirclemagazine.org"
-	
 	user_prompt = raw_input("--- Downloadn Full-Circle magazine editions ---\
 				\nEneter: \
 				\n[1] for special-python editions \
 				\n[2] for all past editions \
 				\n---> ")
-
-	if user_prompt == "1":
-		special_editions = editions("special", base_url)
-		download_editions("special-editions", special_editions)
-	elif user_prompt == "2":
-		past_editions = editions("past", base_url)
-		download_editions("past-editions", past_editions)
-	else:pass
-	
+	user_choice(user_prompt)
 if __name__=='__main__':
 	main()
