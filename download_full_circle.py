@@ -9,6 +9,7 @@ __version__ = '0.1'
 __author__ =  'Norbert Bota'
 __author_email__= 'botanorbert1@gmail.com'
 
+
 base_url = "http://fullcirclemagazine.org"
 
 def make_soup(url):
