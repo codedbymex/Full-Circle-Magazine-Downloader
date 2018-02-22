@@ -38,7 +38,7 @@ def editions(issue, base_url):
         for i in range(1, len(all_links)+1):
             links = "http://dl.fullcirclemagazine.org/issue{0}_en.pdf".format(i)
             all_table.append(links)
-    else:pass
+    
     return all_table
 
 def make_grequests(urls_table):
