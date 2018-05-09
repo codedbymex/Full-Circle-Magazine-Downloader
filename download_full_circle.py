@@ -17,7 +17,7 @@ def make_soup(url):
     soup = BeautifulSoup(req_url.content, "lxml")
     return soup
 
-def editions(issue, base_url):
+def editions(issue):
     """ Find all editions """
     all_table = []
 
@@ -63,10 +63,10 @@ def download_editions(dir_name, link_list):
 def user_choice(user_prompt):
     """ Get user choice """
     if user_prompt == "1":
-        special_editions = editions("special", base_url)
+        special_editions = editions("special")
         return download_editions("special-editions", special_editions)
     elif user_prompt == "2":
-        past_editions = editions("past", base_url)
+        past_editions = editions("past")
         return download_editions("past-editions", past_editions)
     else:pass
 
